@@ -1,4 +1,4 @@
-# Flight Information REST-API by SpringBoot+MyBatis
+# Flight Information RESTful-API by SpringBoot+MyBatis
 
 ## Overview
 1. [Techniques Involved](#Techniques-Involved)
@@ -64,3 +64,5 @@ the program is running on local machine.
   - By departure & destination: http://localhost:8080/flight/route/BEIJING/STOCKHOLM
   - List all: http://localhost:8080/flight
 - Paginated List all: http://localhost:8080/flight/paginated/1
+
+If you find any bug or possible improvement in this project, please feel free to contact me!
