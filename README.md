@@ -65,4 +65,4 @@ the program is running on local machine.
   - List all: http://localhost:8080/flight
 - Paginated List all: http://localhost:8080/flight/paginated/1
 
-**<font size=4>If you find any bug or possible improvement in this project, please feel free to contact me!</font>**
+**If you find any bug or possible improvement in this project, please feel free to contact me!**
