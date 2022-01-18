@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flight.repository.mybatis.FlightMapper">
+
+    <resultMap id="flight" type="Flight">
+        <id property="id" column="id"/>
+        <result property="flight_num" column="flight_num"/>
+        <result property="name" column="name"/>
+        <result property="s_date" column="s_date"/>
+        <result property="a_date" column="a_date"/>
+        <result property="departure" column="departure"/>
+        <result property="destination" column="destination"/>
+        <result property="fare" column="fare"/>
+        <result property="duration" column="duration"/>
+    </resultMap>
+
+
+    <insert id="insertFlight" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+          flight (id, flight_num, name, s_date, a_date, departure, destination, fare, duration)
+        VALUES
+          (#{id}, #{flight_num}, #{name}, #{s_date}, #{a_date}, #{departure}, #{destination}, #{fare}, #{duration})
+    </insert>
+
+    <update id="updateFlightOnNameById">
+        UPDATE
+          flight
+        SET
+          name = #{name} , flight_num = #{flight_num} , s_date = #{s_date} , a_date = #{a_date} , departure = #{departure} , destination = #{destination} , fare = #{fare} , duration = #{duration}
+        WHERE
+          id = #{id}
+    </update>
+
+    <delete id="deleteFlightById">
+        DELETE FROM
+          flight
+        WHERE
+          id = #{id}
+    </delete>
+
+    <select id="selectFlightById" resultMap="flight">
+        SELECT
+          *
+        FROM
+          flight
+        WHERE
+          id = #{id}
+    </select>
+
+    <select id="selectFlightByName" resultMap="flight">
+        SELECT
+            *
+        FROM
+            flight
+        WHERE
+            name = #{name}
+    </select>
+
+    <select id="selectFlightByTime" resultMap="flight">
+        SELECT
+            *
+        FROM
+            flight
+        WHERE
+            s_date = #{s_date}
+    </select>
+
+    <select id="selectFlightByRoute" resultMap="flight">
+        SELECT
+          *
+        FROM
+          flight
+        WHERE
+            departure = #{param1} AND destination = #{param2}
+    </select>
+
+    <select id="selectAllFlights" resultMap="flight">
+        SELECT
+          *
+        FROM
+          flight
+    </select>
+
+    <select id="selectFlightsByPage" resultMap="flight">
+        SELECT
+            *
+        FROM
+            flight
+                LIMIT #{param1}, #{param2}
+    </select>
+
+    <select id="selectCount" resultType="integer">
+        SELECT
+          COUNT(*)
+        FROM
+          flight
+    </select>
+
+</mapper>
